@@ -47,7 +47,7 @@ The test event was collected and raised an alert:
 
 ### Finding: clock drift on the Wazuh VM
 
-The alert `timestamp` (written by the Manager) did not match the event's `systemTime` (written by Windows). The Ubuntu VM clock was out of sync, most likely after the UTM VM had been suspended. In a SOC, wrong timestamps break timelines and correlation, so the VM clock must stay synchronized:
+The alert `timestamp` (written by the Manager) did not match the event's `systemTime` (written by Windows). The Ubuntu VM clock was out of sync, most likely after the UTM VM had been suspended. In a SOC, wrong timestamps break timelines and correlation. **Fixed** by enabling NTP — `timedatectl` now shows *System clock synchronized: yes* and *NTP service: active*:
 
 ```bash
 timedatectl                    # check "System clock synchronized: yes"

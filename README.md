@@ -53,6 +53,10 @@ Details: [docs/01-architecture.md](docs/01-architecture.md)
 
 ![eventcreate alert in alerts.json](screenshots/05-eventcreate-alert-json.png)
 
+**Failed logon (Event ID 4625) → Wazuh rule 60122**
+
+![4625 alert in Wazuh](screenshots/08-failed-logons-4625-wazuh-alert.png)
+
 All screenshots: [screenshots/](screenshots/)
 
 ---
@@ -72,8 +76,12 @@ All screenshots: [screenshots/](screenshots/)
 
 **Detection tests**
 - Generated a Windows test event with `eventcreate` and followed it through the pipeline: endpoint → agent → Manager → rules → alert — result: rule **60602** (level 9) on agent `dell-windows` — [docs/03-detection-test-eventcreate.md](docs/03-detection-test-eventcreate.md)
-- Found a VM clock drift (alert timestamp ≠ event time) — fix: enable NTP on the VM
+- Found a VM clock drift (alert timestamp ≠ event time) and fixed it by enabling NTP on the VM
 - Analyzed alerts from the **CIS Microsoft Windows 11 Enterprise Benchmark** checks (Security Configuration Assessment) — [docs/04-cis-benchmark-sca.md](docs/04-cis-benchmark-sca.md)
+
+**Scenario: failed Windows logons (Event ID 4625)**
+- Generated failed sign-ins on the endpoint; Wazuh raised rule **60122** ("Logon Failure - Unknown user or bad password")
+- Analyzed the event fields (logon type 2, status / sub-status, source 127.0.0.1) and wrote an incident report — [docs/05](docs/05-failed-logons-4625.md) · [report](incident-reports/2026-11-09-failed-logons-4625.md)
 
 **Penetration testing (Master's project)**
 - Reconnaissance, network scanning and service identification with Nmap, vulnerability identification and analysis of results
@@ -103,7 +111,8 @@ wazuh-soc-lab/
 │   ├── 04-cis-benchmark-sca.md
 │   └── 05-failed-logons-4625.md
 ├── incident-reports/
-│   └── TEMPLATE.md
+│   ├── TEMPLATE.md
+│   └── 2026-11-09-failed-logons-4625.md
 └── screenshots/
     └── README.md
 ```
@@ -112,11 +121,10 @@ wazuh-soc-lab/
 
 ## Roadmap (planned — not done yet)
 
-- [ ] Detect repeated failed Windows logons (Event ID 4625) — *in progress: events generated and verified in Event Viewer* — [docs/05-failed-logons-4625.md](docs/05-failed-logons-4625.md)
 - [ ] Add Sysmon on the Windows endpoint for process and network telemetry
 - [ ] File Integrity Monitoring on a monitored folder
 - [ ] SSH brute-force simulation against my own Ubuntu VM and the resulting alerts
-- [ ] First custom detection rule (threshold of failed logons)
+- [ ] First custom detection rule (threshold of repeated 4625 events on one host)
 - [ ] Wazuh Vulnerability Detection on the Windows endpoint
 - [ ] Map each scenario to MITRE ATT&CK and write an incident report
 
