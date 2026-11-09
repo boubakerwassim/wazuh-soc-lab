@@ -45,6 +45,10 @@ Details: [docs/01-architecture.md](docs/01-architecture.md)
 
 ![Wazuh Manager running](screenshots/01a-wazuh-manager-running.png)
 
+**Windows 11 agent active**
+
+![Agent active](screenshots/03-agent-active.png)
+
 **Dashboard overview**
 
 ![Wazuh Dashboard overview](screenshots/02-dashboard-overview.png)
@@ -77,7 +81,7 @@ All screenshots: [screenshots/](screenshots/)
 **Detection tests**
 - Generated a Windows test event with `eventcreate` and followed it through the pipeline: endpoint → agent → Manager → rules → alert — result: rule **60602** (level 9) on agent `dell-windows` — [docs/03-detection-test-eventcreate.md](docs/03-detection-test-eventcreate.md)
 - Found a VM clock drift (alert timestamp ≠ event time) and fixed it by enabling NTP on the VM
-- Analyzed alerts from the **CIS Microsoft Windows 11 Enterprise Benchmark** checks (Security Configuration Assessment) — [docs/04-cis-benchmark-sca.md](docs/04-cis-benchmark-sca.md)
+- Ran the **CIS Microsoft Windows 11 Enterprise Benchmark v3.0.0** (Security Configuration Assessment): 482 checks, 114 passed, 359 failed, score **24 %** — linked the failing account-lockout policy to the 4625 scenario — [docs/04-cis-benchmark-sca.md](docs/04-cis-benchmark-sca.md)
 
 **Scenario: failed Windows logons (Event ID 4625)**
 - Generated failed sign-ins on the endpoint; Wazuh raised rule **60122** ("Logon Failure - Unknown user or bad password")
