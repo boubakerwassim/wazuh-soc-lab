@@ -72,7 +72,7 @@ All screenshots: [screenshots/](screenshots/)
 
 **Detection tests**
 - Generated a Windows test event with `eventcreate` and followed it through the pipeline: endpoint → agent → Manager → rules → alert — result: rule **60602** (level 9) on agent `dell-windows` — [docs/03-detection-test-eventcreate.md](docs/03-detection-test-eventcreate.md)
-- Found and documented a VM clock drift (alert timestamp ≠ event time) — fixed with NTP
+- Found a VM clock drift (alert timestamp ≠ event time) — fix: enable NTP on the VM
 - Analyzed alerts from the **CIS Microsoft Windows 11 Enterprise Benchmark** checks (Security Configuration Assessment) — [docs/04-cis-benchmark-sca.md](docs/04-cis-benchmark-sca.md)
 
 **Penetration testing (Master's project)**
