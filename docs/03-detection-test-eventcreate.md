@@ -16,6 +16,8 @@ eventcreate /T ERROR /ID 100 /L APPLICATION /SO WazuhTest /D "Wazuh detection pi
 
 The event appears in **Event Viewer → Windows Logs → Application** with source `WazuhTest` and Event ID `100`.
 
+![Test event in Event Viewer](../screenshots/04-eventcreate-event-viewer.png)
+
 ## 2. Check collection and processing
 
 - **Dashboard:** search the endpoint's events for `data.win.system.eventID: 100` or the source `WazuhTest`.
