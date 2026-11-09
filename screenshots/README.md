@@ -1,10 +1,14 @@
 # Screenshots
 
-Screenshots from the lab (no personal data, passwords or real IP addresses visible):
-
-1. `01-services-status.png` – Wazuh services running on Ubuntu (`systemctl status`)
-2. `02-agent-active.png` – Windows 11 agent listed as Active in the Dashboard
-3. `03-eventcreate.png` – test event in Windows Event Viewer
-4. `04-eventcreate-in-wazuh.png` – the same event / alert in the Wazuh Dashboard
-5. `05-alert-json.png` – the alert in `alerts.json`
-6. `06-sca-cis.png` – CIS Windows 11 benchmark results (Configuration Assessment)
+| File | Shows | Status |
+|---|---|---|
+| `01a-wazuh-manager-running.png` | Wazuh Manager service running on Ubuntu | ✅ |
+| `01b-wazuh-indexer-running.png` | Wazuh Indexer service running | ✅ |
+| `01c-wazuh-dashboard-filebeat-running.png` | Wazuh Dashboard and Filebeat running | ✅ |
+| `02-dashboard-overview.png` | Dashboard overview (alerts of the last 24 h) | ✅ |
+| `03-agent-active.png` | Windows agent listed as **Active** | ⏳ |
+| `04-eventcreate-event-viewer.png` | Test event in Windows Event Viewer | ⏳ |
+| `05-eventcreate-alert-json.png` | Test event alert in `alerts.json` (rule 60602) | ✅ |
+| `06-sca-cis.png` | CIS Windows 11 benchmark results | ⏳ |
+| `07-failed-logons-4625-event-viewer.png` | Failed logons (Event ID 4625) in Event Viewer | ✅ |
+| `08-failed-logons-4625-wazuh.png` | Event ID 4625 alerts in Wazuh | ⏳ |

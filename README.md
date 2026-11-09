@@ -39,6 +39,24 @@ Details: [docs/01-architecture.md](docs/01-architecture.md)
 
 ---
 
+## Screenshots
+
+**Wazuh stack running on Ubuntu**
+
+![Wazuh Manager running](screenshots/01a-wazuh-manager-running.png)
+
+**Dashboard overview**
+
+![Wazuh Dashboard overview](screenshots/02-dashboard-overview.png)
+
+**Detection test: Windows event → Wazuh alert (rule 60602)**
+
+![eventcreate alert in alerts.json](screenshots/05-eventcreate-alert-json.png)
+
+All screenshots: [screenshots/](screenshots/)
+
+---
+
 ## What I did
 
 **Deployment**
@@ -53,7 +71,8 @@ Details: [docs/01-architecture.md](docs/01-architecture.md)
 - Read raw alerts and events in the Wazuh log files (JSON)
 
 **Detection tests**
-- Generated a Windows test event with `eventcreate` and followed it through the pipeline: endpoint → agent → Manager → rules → alert → Dashboard — [docs/03-detection-test-eventcreate.md](docs/03-detection-test-eventcreate.md)
+- Generated a Windows test event with `eventcreate` and followed it through the pipeline: endpoint → agent → Manager → rules → alert — result: rule **60602** (level 9) on agent `dell-windows` — [docs/03-detection-test-eventcreate.md](docs/03-detection-test-eventcreate.md)
+- Found and documented a VM clock drift (alert timestamp ≠ event time) — fixed with NTP
 - Analyzed alerts from the **CIS Microsoft Windows 11 Enterprise Benchmark** checks (Security Configuration Assessment) — [docs/04-cis-benchmark-sca.md](docs/04-cis-benchmark-sca.md)
 
 **Penetration testing (Master's project)**
@@ -81,7 +100,8 @@ wazuh-soc-lab/
 │   ├── 01-architecture.md
 │   ├── 02-installation.md
 │   ├── 03-detection-test-eventcreate.md
-│   └── 04-cis-benchmark-sca.md
+│   ├── 04-cis-benchmark-sca.md
+│   └── 05-failed-logons-4625.md
 ├── incident-reports/
 │   └── TEMPLATE.md
 └── screenshots/
@@ -92,7 +112,7 @@ wazuh-soc-lab/
 
 ## Roadmap (planned — not done yet)
 
-- [ ] Detect repeated failed Windows logons (Event ID 4625)
+- [ ] Detect repeated failed Windows logons (Event ID 4625) — *in progress: events generated and verified in Event Viewer* — [docs/05-failed-logons-4625.md](docs/05-failed-logons-4625.md)
 - [ ] Add Sysmon on the Windows endpoint for process and network telemetry
 - [ ] File Integrity Monitoring on a monitored folder
 - [ ] SSH brute-force simulation against my own Ubuntu VM and the resulting alerts
