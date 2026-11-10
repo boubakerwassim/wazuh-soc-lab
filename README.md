@@ -6,7 +6,7 @@ Hands-on SOC lab built around **Wazuh (SIEM/XDR)**: deploying the Wazuh stack, e
 > - **Master's project (ISSAT Gafsa, 2024):** academic project combining penetration testing with a Wazuh monitoring environment.
 > - **Personal lab (since 08/2026):** my own Wazuh 4.14.9 lab at home.
 >
-> Both are **lab environments**, not production SOC work. My professional experience is in 1st level IT support.
+> Both are **lab environments**, separate from my professional experience (Junior SOC Analyst at ITGate, 01–06/2025).
 
 ---
 
